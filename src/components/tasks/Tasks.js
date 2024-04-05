@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import EmptyTask from "../../assets/Frame.png";
 import { IoCalendarOutline } from "react-icons/io5";
 import { MdFlag } from "react-icons/md";
@@ -7,9 +7,9 @@ import Employees from "../../assets/Avatar group.png";
 import TaskAdd from "../tasks/TaskAdd";
 import Image from "next/image";
 import DeleteTask from "../tasks/DeleteTask";
-import { useNewTask } from "@/app/context/newTaskContext";
 const Tasks = ({ board }) => {
-  const { toggleNewTask, newTasks } = useNewTask();
+
+  const [showAddTask, setShowAddTask] = useState(false);
   return (
     <div className="p-4 space-y-3">
       {board.tasks.length > 0 ? (
@@ -50,17 +50,18 @@ const Tasks = ({ board }) => {
             </div>
           </div>
         ))
-      ) :newTasks[board.id] === undefined || newTasks[board.id] === false ? (
+      ) : showAddTask === false ? (
         <div className="relative">
           <Image src={EmptyTask} alt="no task" />
           <div className="absolute bottom-48 left-16 space-x-4 text-3xl text-gray-400 cursor-pointer hidden">
             <span>+</span>
-            <span onClick={() => toggleNewTask(board.id)}>New Task</span>
+            <span onClick={() => setShowAddTask(true)}>New Task</span>
           </div>
         </div>
-      ) : newTasks[board.id] === true &&  (
-        <TaskAdd />
-      )}
+      )  : (
+        <TaskAdd setShowAddTask={setShowAddTask} boardId={board.id} />
+      )
+       }
     </div>
   );
 };

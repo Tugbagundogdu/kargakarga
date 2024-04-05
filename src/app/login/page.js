@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import {useRouter} from 'next/navigation';
 import axios from 'axios';
+import LayoutComponent from '../LayoutComponent';
 
 const page = () => {
 
@@ -32,6 +33,7 @@ const page = () => {
 //tugba.gundgdu@gmail.com
 
   return (
+    <LayoutComponent>
     <section className='flex justify-center items-center h-screen'>
         <form action="" className='flex flex-col  justify-center w-96 border border-black p-4 space-y-3  ' onSubmit={handleSubmit}>
             <label htmlFor="">Email</label>
@@ -41,6 +43,7 @@ const page = () => {
             <button type='submit' className='border border-black bg-slate-500 ' >Login</button>
         </form>
     </section>
+    </LayoutComponent>
   )
 }
 

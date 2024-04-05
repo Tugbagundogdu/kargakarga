@@ -1,13 +1,11 @@
-import Header from "@/components/Header";
-import Sidebar from "@/components/sidebar/Sidebar";
+import LayoutComponent from "./LayoutComponent";
 
 export default function Home() {
   return (
+    <LayoutComponent >
     <main className="">
-      <Header/>
-      <div className="flex">
-      <Sidebar/>
-      </div>
+     
     </main>
+    </LayoutComponent>
   );
 }

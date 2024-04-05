@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { NewTaskProvider } from "./context/newTaskContext";
-
+import { ShowAddTaskProvider } from "./context/AddTaskContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -12,9 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <NewTaskProvider>
+      <ShowAddTaskProvider>
       <body className={inter.className}>{children}</body>
-      </NewTaskProvider>
+      </ShowAddTaskProvider>
     </html>
   );
 }

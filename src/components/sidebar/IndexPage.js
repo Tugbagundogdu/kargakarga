@@ -10,7 +10,7 @@ const IndexPage = ({ items }) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
   return (
-    <div className="flex flex-col h-screen justify-between py-10 px-6 ">
+    <div className="flex flex-col justify-between py-10 px-6 h-full ">
       <div>
         <h1 className="text-2xl font-medium mb-2">Projeler</h1>
         {items?.map((item, index) => (
