@@ -13,7 +13,7 @@ const Dashboard = () => {
       <div className='flex border border-gray-300 rounded-md max-w-min mt-7 bg-white'>
       {
         List.map((item , index) =>(
-            <div key={index} className=' px-4 py-2 border border-r cursor-pointer'> 
+            <div key={index} className=' max-lg:px-3 px-4 py-2 border border-r cursor-pointer'> 
             <div  onClick={() =>setActiveButton(index)} className={activeButton === index ? 'text-[#145389] font-bold' : '' }>{item}</div>
             </div>
         ))
