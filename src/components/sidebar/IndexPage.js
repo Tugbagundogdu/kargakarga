@@ -34,7 +34,7 @@ const IndexPage = ({ items }) => {
             </div>
           </div>
         ))}
-        <div className="flex items-center mt-4 space-x-6">
+        <div className="flex sm:flex-row space-y-3 flex-col items-center mt-4 space-x-6">
           <SiSimpleanalytics color="#717a8e" />
           <span className="text-[#717a8e] cursor-pointer">Proje Oluştur</span>
         </div>
