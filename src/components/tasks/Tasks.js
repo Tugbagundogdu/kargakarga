@@ -6,7 +6,7 @@ import { MdFlag } from "react-icons/md";
 import Employees from "../../assets/Avatar group.png";
 import TaskAdd from "../tasks/TaskAdd";
 import Image from "next/image";
-import DeleteTask from "../tasks/DeleteTask";
+import DeleteTask from "../tasks/DeleteTask"
 const Tasks = ({ board }) => {
 
   const [showAddTask, setShowAddTask] = useState(false);
@@ -25,11 +25,11 @@ const Tasks = ({ board }) => {
               <Image src={Employees} alt="employees" />
             </div>{" "}
             <h2>{task.description}</h2>
-            <h3>
+            <h3 className="max-md:text-sm">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro
               incidunt non repellat reprehenderit iure, cupiditate a iusto!
             </h3>
-            <div className="flex space-x-3">
+            <div className="flex space-x-3 max-md:text-xs max-md:flex-col">
               <IoCalendarOutline size={20} color="#757e91" />
               <span className="text-sm text-[#757e91]">
                 {" "}

@@ -17,7 +17,7 @@ const IndexPage = ({ items }) => {
           <div key={index} className="p-2 hover:bg-[#f3f6fd] rounded-md ">
             <div
               onClick={() => handleClick(index)}
-              className="cursor-pointer flex justify-between items-center"
+              className="cursor-pointer flex justify-start lg:justify-between items-center"
             >
               {item.title}
               <FaAngleDown color="#717a8e" />

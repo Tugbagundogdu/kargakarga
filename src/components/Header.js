@@ -10,10 +10,13 @@ const Header = () => {
       <div className='text-[#145389] font-bold text-2xl'>
         kargakarga
       </div>
-      <div className='flex items-center space-x-4'>
+      <div className='md:flex items-center space-x-4 hidden '>
         <LuBell size={25} color='#757e91'/>
         <LuBell size={25} color='#757e91'/>
         <Image src={Logo} alt='logo' />
+      </div>
+      <div className='block md:hidden cursor-pointer bg-slate-300 rounded-md p-3' >
+        Projeler
       </div>
     </div>
   )
