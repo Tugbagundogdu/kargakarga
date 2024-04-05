@@ -5,7 +5,7 @@ import Rightbar from './Rightbar'
 
 const Sidebar = () => {
   return (
-    <div className='w-3/12 border-r border-gray-300 h-screen flex'>
+    <div className='w-3/12 border-r border-gray-300 flex'>
       <Leftbar/>
       <Rightbar/>
     </div>

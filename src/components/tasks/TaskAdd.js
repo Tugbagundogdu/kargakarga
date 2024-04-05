@@ -1,48 +1,65 @@
-import { useNewTask } from '@/app/context/newTaskContext';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useState } from 'react'
+import { toast } from 'react-toastify';
+ 
+const TaskAdd = ({setShowAddTask , boardId}) => {
 
-const TaskAdd = () => {
-    const { toggleNewTask } = useNewTask();
+  const queryClient = useQueryClient();
 
     const [formData , setFormData] = useState({
         name: "",
         description: "",
-        boardId: 1,
-        flagId: 2,
+        boardId,
+        flagId: 1 ,
         startDate: "",
         endDate: ""
       })
 
       const handleChange = (e) => {
+        const value = e.target.name === 'flagId' ? parseInt(e.target.value) : e.target.value
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value
+            [e.target.name]: value
         });
       }
 
+  
+
       const userToken = localStorage.getItem('userToken');
 
-      const createTask = async (e) => {
-        toggleNewTask();
+      const addTask = async (e) => {
         e.preventDefault();
         console.log(formData, 'gonderdıgım data')
-       try{
-        const res = await axios.post('https://api.management.parse25proje.link/api/tasks', formData,{
-            headers :{
-                Authorization: `Bearer ${userToken}`
-            }
-    })
-    console.log(res.data , 'basarılı mı kızz');
-       }catch(err){
-        console.log(err);
-       }
+          const res = await axios.post('https://api.management.parse25proje.link/api/tasks', formData,{
+              headers :{
+                  Authorization: `Bearer ${userToken}`
+              }
+      })
+      setShowAddTask(false);
+      console.log(res.data , 'basarılı mı');
       }
 
+      const {mutate , isLoading , isError } = useMutation({
+        mutationFn: addTask,
+        onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: ["boards"]});
+          toast.success('Task created successfully');
+        }
+
+      })
+
+    if(isError){
+      toast.error('An error occurred while creating the task');
+    }
+
   return (
-    <form onSubmit={createTask} className='flex flex-col task-shadow p-4 space-y-4'>
-     <label htmlFor="name">Task Title</label>  
-      <div className='cursor-pointer text-red-500' onClick={toggleNewTask()}>X</div> 
+    
+    <form onSubmit={mutate} className='flex flex-col task-shadow p-4 space-y-3'>
+      <div className='flex justify-between'>
+      <label htmlFor="name">Task Title</label>  
+      <div className='cursor-pointer text-red-500 font-bold text-xl' onClick={() => setShowAddTask(false)}>X</div> 
+      </div>  
     <input
       type="text"
       name="name"
@@ -62,7 +79,7 @@ const TaskAdd = () => {
     ></textarea>
     <label htmlFor="startDate">Start Date</label>
     <input
-      type="datetime-local" 
+      type="date" 
       name="startDate"
       value={formData.startDate}
       onChange={handleChange}
@@ -71,14 +88,28 @@ const TaskAdd = () => {
     />
     <label htmlFor="endDate">End Date</label>
     <input
-      type="datetime-local"
+      type="date"
       name="endDate"
       value={formData.endDate}
       onChange={handleChange}
       className='border border-gray-400 outline-none rounded-md p-1'
 
     />
-    <button className=' bg-slate-300 p-3 hover:bg-slate-400' type="submit">Create</button>
+    <label htmlFor="flagId">Flag</label>
+    <select
+     name="flagId"
+     value={formData.flagId}
+     onChange={handleChange}
+     className='border border-gray-400 outline-none rounded-md p-1'
+    >
+      <option value={1}>High Priority</option>
+      <option value={2}>Medium Priority</option>
+      <option value={3}>Low Priority</option>
+      <option value={4}>Standart Priority</option>
+      <option value={5}>Neutral Priority</option>
+    </select>
+    
+    <button disabled={isLoading} className=' disabled:bg-gray-400 bg-slate-300 p-3 hover:bg-slate-400' type="submit">Create</button>
   </form>
   )
 }
