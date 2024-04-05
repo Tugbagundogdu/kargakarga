@@ -55,11 +55,11 @@ const Cards = () => {
   }
 
   return (
-    <div className="flex space-x-5 overflow-x-auto no-scrollbar ">
+    <div className="flex space-x-2 md:space-x-5 overflow-x-auto no-scrollbar ">
       {data?.map((board, index) => (
         <div
           key={index}
-          className="border border-gray-300 flex-shrink-0 w-4/12 rounded-xl my-6 bg-white"
+          className="border border-gray-300 flex-shrink-0 lg:w-4/12 md:w-5/12 sm:w-7/12 w-full rounded-xl my-6 bg-white"
         >
           <div className="">
             <div className="flex justify-between items-center px-4 py-3">
