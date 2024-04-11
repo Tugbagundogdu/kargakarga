@@ -32,13 +32,13 @@ const Login = () => {
 //tugba.gundgdu@gmail.com
 
   return (
-    <section className='flex justify-center items-center h-screen'>
-        <form action="" className='flex flex-col  justify-center w-96 border border-black p-4 space-y-3  ' onSubmit={handleSubmit}>
+    <section className='flex justify-center items-center h-screen bg-[#f3f6fd]'>
+        <form action="" className='flex flex-col  justify-center w-96 border border-gray p-4 space-y-3 rounded-md task-shadow ' onSubmit={handleSubmit}>
             <label htmlFor="">Email</label>
-            <input type="email" placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)} className='border border-gray-400'/>
+            <input type="email" placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)} className='border border-gray-400 outline-none p-2 rounded-md '/>
             <label htmlFor="">Password</label>
-            <input type="password" placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} className='border border-gray-400'/>
-            <button type='submit' className='border border-black bg-slate-500 ' >Login</button>
+            <input type="password" placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} className='border border-gray-400 outline-none rounded-md p-2 '/>
+            <button type='submit' className='p-2 rounded-sm text-white bg-slate-500 ' >Login</button>
         </form>
     </section>
 
