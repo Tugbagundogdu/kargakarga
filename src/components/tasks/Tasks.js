@@ -7,16 +7,24 @@ import Employees from "../../assets/Avatar group.png";
 import TaskAdd from "../tasks/TaskAdd";
 import Image from "next/image";
 import DeleteTask from "../tasks/DeleteTask"
+import TaskDetail from "../task-detail/TaskDetail";
 const Tasks = ({ board }) => {
 
   const [showAddTask, setShowAddTask] = useState(false);
+  const [showDetail, setShowDetail] = useState(false);
+  const [taskId, setTaskId] = useState(null);
+  const detailPage = (taskId) => {
+    setTaskId(taskId);
+    setShowDetail(true);
+  }
   return (
-    <div className="p-4 space-y-3">
+    <div className="p-4 space-y-3 cursor-pointer">
       {board.tasks.length > 0 ? (
         board.tasks.map((task, index) => (
           <div
             key={index}
             className="border border-gray-200 rounded-md p-4 space-y-4"
+            onClick={() => detailPage(task.id)}
           >
             <div className="flex justify-between">
               <h1 key={index} className="text-green-700 font-bold">
@@ -49,6 +57,7 @@ const Tasks = ({ board }) => {
               </div>
             </div>
           </div>
+          
         ))
       ) : showAddTask === false ? (
         <div className="relative">
@@ -61,6 +70,13 @@ const Tasks = ({ board }) => {
       )  : (
         <TaskAdd setShowAddTask={setShowAddTask} boardId={board.id} />
       )
+      
+      
+       }
+       {
+        showDetail && (
+          <TaskDetail setShowDetail={setShowDetail} board={board} taskId ={taskId} />
+        )
        }
     </div>
   );

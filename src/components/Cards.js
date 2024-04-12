@@ -21,6 +21,7 @@ const Cards = () => {
         }
 
       );
+      console.log(res.data.data);
       return res.data.data
   };
 
