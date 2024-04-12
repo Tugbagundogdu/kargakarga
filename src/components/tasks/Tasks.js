@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import EmptyTask from "../../assets/Frame.png";
 import { IoCalendarOutline } from "react-icons/io5";
 import { MdFlag } from "react-icons/md";
-import Employees from "../../assets/Avatar group.png";
+import Employees from "../../assets/avatars.png";
 import TaskAdd from "../tasks/TaskAdd";
 import Image from "next/image";
 import DeleteTask from "../tasks/DeleteTask"
