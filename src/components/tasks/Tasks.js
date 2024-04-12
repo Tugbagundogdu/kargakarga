@@ -18,7 +18,7 @@ const Tasks = ({ board }) => {
     setShowDetail(true);
   }
   return (
-    <div className="p-4 space-y-3 cursor-pointer">
+    <div className="p-4 space-y-3">
       {board.tasks.length > 0 ? (
         board.tasks.map((task, index) => (
           <div
