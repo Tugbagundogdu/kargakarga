@@ -1,5 +1,6 @@
 import React from 'react'
 import TaskDetailHeader from './TaskDetailHeader'
+import TaskDetailContent from './TaskDetailContent'
 
 const TaskDetail = ({setShowDetail , board , taskId}) => {
 
@@ -11,9 +12,7 @@ const TaskDetail = ({setShowDetail , board , taskId}) => {
         lists.map((board , index) => (
             <div key={index} className='relative w-4/5 h-2/3 bg-white rounded-lg py-6'>
                <TaskDetailHeader/>
-                <h1>{board.name}</h1>
-                <h2>{board.description}</h2>
-                <h3>{board.code}</h3>
+               <TaskDetailContent lists={lists} />
                 <button className='absolute top-6 right-6 bg-red-400 rounded-full w-6 h-6 text-sm flex justify-center items-center text-white font-bold' onClick={() => setShowDetail(false)}>X</button>
             </div>
         ))
