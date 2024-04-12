@@ -17,11 +17,13 @@ const Login = () => {
             localStorage.setItem('userToken', res.data.data.token); 
                 router.push('/dashboard');
             }else{
-                alert('yanlıs sifre asko')
+                alert('password or email is wrong')
+
             }
             
         }catch(err){
             console.log(err , "catchhh");
+            alert('password or email is wrong')
         }
     }
 

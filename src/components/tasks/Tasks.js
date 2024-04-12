@@ -53,7 +53,7 @@ const Tasks = ({ board }) => {
       ) : showAddTask === false ? (
         <div className="relative">
           <Image src={EmptyTask} alt="no task" />
-          <div className="absolute bottom-48 left-16 space-x-4 text-3xl text-gray-400 cursor-pointer hidden">
+          <div className="absolute w-full text-center bottom-1/4 space-x-4 text-3xl max-md:text-xl text-gray-400 cursor-pointer hidden">
             <span>+</span>
             <span onClick={() => setShowAddTask(true)}>New Task</span>
           </div>
